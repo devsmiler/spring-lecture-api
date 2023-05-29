@@ -14,6 +14,7 @@ public class Invitation extends BaseTimeEntity {
     @Id @Column(name = "invitation_id")
     @GeneratedValue
     private Long id;
+    @Column(unique = true)
     private String uuid;
     private Boolean isExpired;
     @OneToOne(fetch = FetchType.LAZY)
@@ -26,7 +27,6 @@ public class Invitation extends BaseTimeEntity {
         this.isExpired = false;
         this.member = member;
     }
-
 
     public void toExpired(){
         this.isExpired = true;

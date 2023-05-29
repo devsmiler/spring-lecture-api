@@ -24,6 +24,7 @@ public class Member extends BaseTimeEntity {
     private Long id;
     private String name;
     private String phone;
+    @Column(unique = true)
     private String email;
     private String password;
     private Boolean isTemporary;

@@ -20,21 +20,26 @@ public class InvitationService {
             CreateInvitationDto createInvitationDto
     ) {
         String uuid = String.valueOf(UUID.randomUUID());
-
         Optional<Member> optionalMember = memberRepository.findByEmail(createInvitationDto.getEmail());
 
-        if (optionalMember.isPresent()){
-            if(optionalMember.get().getIsTemporary()){
-                Invitation invitation = optionalMember.get().getInvitation();
-                return invitation.getUuid();
-            } else {
-                throw new RuntimeException("이미 존재하는 회원입니다.");
-            }
+        if (optionalMember.isPresent()) {
+            return getInvitation(optionalMember.get());
         }
+        return createNewInvitation(createInvitationDto, uuid);
+    }
 
+    private static String getInvitation(Member member) {
+        if(member.getIsTemporary()){
+            Invitation invitation = member.getInvitation();
+            return invitation.getUuid();
+        } else {
+            throw new RuntimeException("이미 존재하는 회원입니다.");
+        }
+    }
+
+    private String createNewInvitation(CreateInvitationDto createInvitationDto, String uuid) {
         Member member = memberRepository.save(createInvitationDto.toMemberEntity());
         Invitation invitation = Invitation.builder().uuid(uuid).member(member).build();
-
         invitationRepository.save(invitation);
         return invitation.getUuid();
     }
