@@ -1,13 +1,13 @@
 package member.week1.configuration;
 
-import com.jwt.study.domain.Member;
-import com.jwt.study.service.MemberDetailService;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import member.week1.member.MemberDetailService;
+import member.week1.member.domain.Member;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;

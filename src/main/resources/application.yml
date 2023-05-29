@@ -4,7 +4,7 @@ spring:
       enabled: true
       path: /h2-console
   datasource:
-    url: jdbc:h2:mem:security
+    url: jdbc:h2:mem:dean
     username: sa
     password:
     driver-class-name: org.h2.Driver
@@ -17,7 +17,7 @@ spring:
   jpa:
     defer-datasource-initialization: true
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
     properties:
       hibernate:
         show_sql: true
@@ -30,5 +30,5 @@ jwt:
   token:
     header: "Authorization"
     secret: "mySecret"
-    expire-time: 3600000 # ?? ? ???
+    expire-time: 3600000
 
