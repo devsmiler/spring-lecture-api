@@ -5,6 +5,7 @@ import member.week1.member.dto.InviteJoinDto;
 import member.week1.member.dto.SignIn;
 import member.week1.member.dto.SignUp;
 import member.week1.member.dto.TokenResponse;
+import member.week1.member.service.MemberService;
 import org.springframework.web.bind.annotation.*;
 
 @RestController

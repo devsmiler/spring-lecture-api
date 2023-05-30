@@ -1,4 +1,4 @@
-package member.week1.member;
+package member.week1.member.service;
 
 import lombok.RequiredArgsConstructor;
 import member.week1.configuration.JwtTokenProvider;
