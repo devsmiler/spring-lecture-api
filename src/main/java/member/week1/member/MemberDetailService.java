@@ -20,6 +20,4 @@ public class MemberDetailService {
         Member m = (Member) authentication.getPrincipal();
         return memberRepository.findById(m.getId()).orElseThrow(RuntimeException::new);
     }
-
-
 }

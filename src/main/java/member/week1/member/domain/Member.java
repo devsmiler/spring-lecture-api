@@ -41,7 +41,9 @@ public class Member extends BaseTimeEntity {
         this.roles = roles;
         this.isTemporary = isTemporary;
     }
-
+    public void setInvitation(Invitation invitation){
+        this.invitation = invitation;
+    }
     public void setPassword(String password) {
         this.password = password;
     }
