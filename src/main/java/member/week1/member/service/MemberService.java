@@ -25,6 +25,7 @@ public class MemberService {
         memberRepository.save(signUp.toMemberEntity());
     }
     public void joinByInvitation(String invitationCode, InviteJoinDto inviteJoinDto) {
+        System.out.println(invitationCode+",  "+inviteJoinDto.getPassword());
         Invitation invitation = invitationRepository.findInvitationByUuid(invitationCode).orElseThrow(InvalidRequest::new);
         Member member = invitation.getMember();
         member.setPassword(inviteJoinDto.getPassword());

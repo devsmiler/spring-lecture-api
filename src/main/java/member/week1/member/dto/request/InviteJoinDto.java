@@ -9,11 +9,7 @@ import javax.validation.constraints.NotNull;
 
 @Getter @Setter
 public class InviteJoinDto {
-    @NotNull @NotBlank
+    @NotBlank(message = "비밀번호를 입력하세요")
     private String password;
 
-    @Builder
-    public InviteJoinDto(String password) {
-        this.password = password;
-    }
 }

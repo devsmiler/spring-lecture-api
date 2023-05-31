@@ -36,13 +36,13 @@ class InvitationControllerTest {
     @Autowired
     private MemberRepository memberRepository;
     @Autowired
-    private JwtTokenProvider jwtTokenProvider;
-    @Autowired
     private InvitationRepository invitationRepository;
+    @Autowired
+    private JwtTokenProvider jwtTokenProvider;
     private String adminToken;
     private String normalToken;
     @BeforeEach
-    void clean() {
+    void cleanAndSetup() {
         invitationRepository.deleteAll();
         memberRepository.deleteAll();
 
