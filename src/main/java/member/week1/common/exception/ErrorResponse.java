@@ -1,4 +1,4 @@
-package member.week1.exception;
+package member.week1.common.exception;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Builder;

@@ -1,9 +1,11 @@
 package member.week1.invitation;
 
 import lombok.RequiredArgsConstructor;
+import member.week1.common.exception.AlreadyExistsMemberException;
 import member.week1.invitation.domain.Invitation;
 import member.week1.invitation.dto.CreateInvitationDto;
-import member.week1.member.repository.MemberRepository;
+import member.week1.invitation.dto.ResponseInvitation;
+import member.week1.member.MemberRepository;
 import member.week1.member.domain.Member;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,7 +18,7 @@ import java.util.UUID;
 public class InvitationService {
     private final InvitationRepository invitationRepository;
     private final MemberRepository memberRepository;
-    public String createInvitation(
+    public ResponseInvitation createInvitation(
             CreateInvitationDto createInvitationDto
     ) {
         String uuid = String.valueOf(UUID.randomUUID());
@@ -28,20 +30,20 @@ public class InvitationService {
         return createNewInvitation(createInvitationDto, uuid);
     }
 
-    private static String getInvitation(Member member) {
+    private static ResponseInvitation getInvitation(Member member) {
         if(member.getIsTemporary()){
             Invitation invitation = member.getInvitation();
-            return invitation.getUuid();
+            return ResponseInvitation.builder().invitationCode(invitation.getUuid()).build();
         } else {
-            throw new RuntimeException("이미 존재하는 회원입니다.");
+            throw new AlreadyExistsMemberException();
         }
     }
 
-    private String createNewInvitation(CreateInvitationDto createInvitationDto, String uuid) {
+    private ResponseInvitation createNewInvitation(CreateInvitationDto createInvitationDto, String uuid) {
         Member member = memberRepository.save(createInvitationDto.toMemberEntity());
         Invitation invitation = Invitation.builder().uuid(uuid).member(member).build();
         invitationRepository.save(invitation);
-        return invitation.getUuid();
+        return ResponseInvitation.builder().invitationCode(invitation.getUuid()).build();
     }
 
 

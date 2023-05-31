@@ -2,6 +2,7 @@ package member.week1.invitation;
 
 import lombok.RequiredArgsConstructor;
 import member.week1.invitation.dto.CreateInvitationDto;
+import member.week1.invitation.dto.ResponseInvitation;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,8 +17,8 @@ public class InvitationController {
     private final InvitationService invitationService;
 
     @PostMapping
-//    @PreAuthorize("hasAnyAuthority('ADMIN')")
-    public String createInvitation(
+    @PreAuthorize("hasAnyAuthority('ADMIN')")
+    public ResponseInvitation createInvitation(
             @RequestBody CreateInvitationDto createInvitationDto
     ) {
         return invitationService.createInvitation(createInvitationDto);

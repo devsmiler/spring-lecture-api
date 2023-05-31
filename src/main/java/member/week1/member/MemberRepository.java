@@ -1,4 +1,4 @@
-package member.week1.member.repository;
+package member.week1.member;
 
 import member.week1.member.domain.Member;
 import org.springframework.data.jpa.repository.JpaRepository;

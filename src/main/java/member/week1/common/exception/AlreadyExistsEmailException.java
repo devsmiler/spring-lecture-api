@@ -1,4 +1,4 @@
-package member.week1.exception;
+package member.week1.common.exception;
 
 public class AlreadyExistsEmailException extends CustomException {
 
@@ -7,7 +7,6 @@ public class AlreadyExistsEmailException extends CustomException {
     public AlreadyExistsEmailException() {
         super(MESSAGE);
     }
-
 
     @Override
     public int statusCode() {

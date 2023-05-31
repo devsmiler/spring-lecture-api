@@ -1,5 +1,6 @@
 package member.week1.invitation.dto;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 import member.week1.member.domain.Member;
@@ -24,5 +25,12 @@ public class CreateInvitationDto {
                 .roles(Collections.singletonList("GUEST"))
                 .isTemporary(true)
                 .build();
+    }
+
+    @Builder
+    public CreateInvitationDto(String email, String name, String phone) {
+        this.email = email;
+        this.name = name;
+        this.phone = phone;
     }
 }

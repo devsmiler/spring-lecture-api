@@ -1,4 +1,4 @@
-package member.week1.member.dto;
+package member.week1.member.dto.response;
 
 import lombok.Builder;
 import lombok.Getter;

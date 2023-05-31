@@ -33,7 +33,7 @@ public class Member extends BaseTimeEntity {
     @ElementCollection(fetch = FetchType.EAGER)
     private List<String> roles = new ArrayList<>();
     @Builder
-    public Member(String name, String email, String password, String phone,  List<String> roles, Boolean isTemporary) {
+    public Member(String name, String email, String password, String phone, List<String> roles, Boolean isTemporary) {
         this.name = name;
         this.email = email;
         this.password = password;

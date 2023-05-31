@@ -1,4 +1,4 @@
-package member.week1.exception;
+package member.week1.common.exception;
 
 public class InvalidSignInInformation extends CustomException {
 

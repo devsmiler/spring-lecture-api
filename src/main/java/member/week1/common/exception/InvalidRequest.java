@@ -1,4 +1,4 @@
-package member.week1.exception;
+package member.week1.common.exception;
 
 public class InvalidRequest extends CustomException {
     private static final String MESSAGE = "잘못된 요청입니다.";
