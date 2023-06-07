@@ -11,5 +11,6 @@ public class MemberDetailService {
     private final MemberRepository memberRepository;
     public Member getMemberId(String userId) {
         return memberRepository.findById(Long.valueOf(userId)).orElseThrow(RuntimeException::new);
+        // FIXME A subclass of CustomException would be more appropriate
     }
 }

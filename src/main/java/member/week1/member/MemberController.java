@@ -16,6 +16,6 @@ public class MemberController {
             @PathVariable String invitationCode,
             @RequestBody InviteJoinDto joinByInvitation
     ) {
-        memberService.joinByInvitation(invitationCode, joinByInvitation);
+        memberService.joinByInvitation(invitationCode, joinByInvitation); // FIXME Add response
     }
 }
