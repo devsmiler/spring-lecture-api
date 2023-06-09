@@ -8,6 +8,6 @@ import java.util.Optional;
 
 public interface InvitationRepository extends JpaRepository<Invitation, Long> {
     @Query("select i from Invitation i where i.isExpired = false")
-    Optional<Invitation> findInvitationByUuid(String uuid);
+    Optional<Invitation> findInvitationByUuid(String uuid); // FIXME findInvitationByUuidAndIsExpiredFalse is one of candidate
 
 }

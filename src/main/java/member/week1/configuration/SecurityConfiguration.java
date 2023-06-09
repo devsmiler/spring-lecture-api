@@ -30,7 +30,7 @@ public class SecurityConfiguration {
                 .and().exceptionHandling().authenticationEntryPoint(new CustomAuthenticationEntryPoint())// 401 에러 커스텀
                 .and()
                 .addFilterBefore(new JwtAuthenticationFilter(jwtTokenProvider), UsernamePasswordAuthenticationFilter.class)
-                .build();
+                .build(); // FIXME Line breaks must be applied with the same rules.
     }
 
 }

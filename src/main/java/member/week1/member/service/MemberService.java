@@ -25,17 +25,18 @@ public class MemberService {
         memberRepository.save(signUp.toMemberEntity());
     }
     public void joinByInvitation(String invitationCode, InviteJoinDto inviteJoinDto) {
-        System.out.println(invitationCode+",  "+inviteJoinDto.getPassword());
+        System.out.println(invitationCode+",  "+inviteJoinDto.getPassword());//FIXME CRITICAL Vulnerability. Do not print or log password.
         Invitation invitation = invitationRepository.findInvitationByUuid(invitationCode).orElseThrow(InvalidRequest::new);
         Member member = invitation.getMember();
         member.setPassword(inviteJoinDto.getPassword());
         member.toPermanentMember();
         invitation.toExpired();
+        // FIXME Need to save member, invitation
     }
     public TokenResponse signIn(SignIn signIn) {
         return getTokenResponse(signIn, memberRepository, jwtTokenProvider);
     }
-    static TokenResponse getTokenResponse(SignIn signIn, MemberRepository memberRepository, JwtTokenProvider jwtTokenProvider) {
+    static TokenResponse getTokenResponse(SignIn signIn, MemberRepository memberRepository, JwtTokenProvider jwtTokenProvider) { //FIXME Is there any reason to made this method as static?
         Member member = memberRepository.findByEmail(signIn.getEmail()).orElseThrow(InvalidSignInInformation::new);
         if (member.getPassword().equals(signIn.getPassword())){
             return TokenResponse.builder().token(jwtTokenProvider.createToken(String.valueOf(member.getId()), member.getRoles())).build();

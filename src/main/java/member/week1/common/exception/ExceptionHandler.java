@@ -7,10 +7,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Slf4j
 @ControllerAdvice
-public class ExceptionHandler {
+public class ExceptionHandler { // FIXME ClassName should be more specific such as Week1ControllerAdvice
+
     @org.springframework.web.bind.annotation.ExceptionHandler(CustomException.class)
     @ResponseBody
-    public ResponseEntity<ErrorResponse> DeanExceptionHandler(CustomException e) {
+    public ResponseEntity<ErrorResponse> DeanExceptionHandler(CustomException e) { // FIXME Method name should be verb
         ErrorResponse body = ErrorResponse.builder()
                 .code(String.valueOf(e.statusCode()))
                 .message(e.getMessage())

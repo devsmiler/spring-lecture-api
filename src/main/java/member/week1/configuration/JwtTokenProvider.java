@@ -38,7 +38,7 @@ public class JwtTokenProvider{
     private String secret;
     @PostConstruct
     void init(){
-        log.info("before encode " + secret);
+        log.info("before encode " + secret); // FIXME Critical vulnerability. Do not print or log secret
 
         secret = Base64.getEncoder().encodeToString(secret.getBytes(StandardCharsets.UTF_8));
         log.info("after encode "+secret);
@@ -50,7 +50,7 @@ public class JwtTokenProvider{
 
         return Jwts.builder().setClaims(claims) // 페이로드값 설정
                 .setIssuedAt(new Date(System.currentTimeMillis())) // 발급시간
-                .setExpiration(new Date(System.currentTimeMillis() + 360000L)) // 만료 시간
+                .setExpiration(new Date(System.currentTimeMillis() + 360000L)) // 만료 시간 // FIXME Expire time is too short
                 .signWith(SignatureAlgorithm.HS256, secret) // 서명을 어떤식으로 할것인지 알고리즘은 HS256을 쓰고 시크릿키로 한번더 요걸로 토큰 위변조 값을 체크하는것이지유
                 .compact();
     }

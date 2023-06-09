@@ -12,4 +12,5 @@ public class AlreadyExistsEmailException extends CustomException {
     public int statusCode() {
         return 400;
     }
+    // FIXME It would be better to have a constant class that collects status codes
 }

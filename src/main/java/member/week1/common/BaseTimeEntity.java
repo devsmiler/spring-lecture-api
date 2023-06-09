@@ -11,7 +11,7 @@ import javax.persistence.MappedSuperclass;
 import java.time.LocalDateTime;
 
 @Getter
-@MappedSuperclass @EntityListeners(AuditingEntityListener.class)  // Auditing(자동으로 값 매핑) 기능 추가
+@MappedSuperclass @EntityListeners(AuditingEntityListener.class)  // Auditing(자동으로 값 매핑) 기능 추가  // FIXME Each annotation should be placed in its own line
 public abstract class BaseTimeEntity {
     @CreatedDate
     @Column(updatable = false)
